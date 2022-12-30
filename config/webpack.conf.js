@@ -1,15 +1,22 @@
-
+"use strict";
 const path = require("path");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
-// const appConfig = require("./webpack.app.config");
-const Webpack = require("webpack");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const { merge } = require("webpack-merge");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const isDev = process.env.NODE_ENV === "development";
-const moduleConfig = isDev ? require("./webpack.dev.config") : require("./webpack.prod.config");
-const componentConfig = require("./webpack.component");
-const config = {
+module.exports = {
+  mode: "production",
+  entry: {
+    app: path.join(__dirname, "..", "src/main.ts")
+  },
+  output: {
+    path: path.resolve(process.cwd(), "./lib"),
+    publicPath: "/dist/",
+    filename: "bluepha-vue-low-ui.js",
+    chunkFilename: "[id].js",
+    libraryExport: "default",
+    library: "ELEMENT",
+    libraryTarget: "commonjs2"
+  },
   module: {
     rules: [{
       test: /\.vue$/,
@@ -25,7 +32,7 @@ const config = {
     }, {
       test: /\.(css|postcss)$/,
       use: [
-        isDev ? "vue-style-loader" : MiniCssExtractPlugin.loader,
+        MiniCssExtractPlugin.loader,
         {
           loader: "css-loader",
           options: {
@@ -70,31 +77,10 @@ const config = {
   },
   plugins: [
     new VueLoaderPlugin(), // 最新版的vue-loader需要配置插件
-    new CopyWebpackPlugin({
-      patterns: [{
-        from: path.join(__dirname, "..", "public"),
-        to: "public",
-        globOptions: {
-          dot: true,
-          ignore: [".*"]
-        }
-      }]
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
     }),
-    new Webpack.DefinePlugin({
-      "process.env": {
-        SERVER_ENV: JSON.stringify(process.env.SERVER_ENV ? process.env.SERVER_ENV.trim() : "development"),
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV ? process.env.NODE_ENV.trim() : "development"),
-        BUILD_ENV: JSON.stringify(process.env.BUILD_ENV ? process.env.BUILD_ENV.trim() : "development"),
-      }
-    })
-  ]
+    new CleanWebpackPlugin(),
+  ],
 };
-
-let outputConfig = merge(config, moduleConfig);
-if (process.env.NODE_ENV !== "development" && process.env.NODE_ENV === "component") {
-  outputConfig = [merge(config, componentConfig)];
-} else {
-  outputConfig = [merge(config, moduleConfig)]; 
-}
-
-module.exports = outputConfig;

@@ -1,5 +1,5 @@
 import Vue from "vue";
-import HelloWorld from "../packages/hello-world/index";
+import HelloWorld from "../packages/hello-world/index.js";
 const components = [
   HelloWorld,
 ];
