@@ -1,9 +1,9 @@
-import BlHelloWorld from "./index.vue";
+import HelloWorld from "./index.vue";
 
 /* istanbul ignore next */
-BlHelloWorld.install = function(Vue) {
-  console.log(44344, BlHelloWorld);
-  Vue.component(BlHelloWorld.name, BlHelloWorld);
+HelloWorld.install = function(Vue) {
+  console.log(44344, HelloWorld);
+  Vue.component(HelloWorld.name, HelloWorld);
 };
 
-export default BlHelloWorld;
+export default HelloWorld;
