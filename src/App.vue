@@ -3,7 +3,7 @@
     <img alt="Vue logo" class="logo" src="./logo.svg" width="125" height="125" />
     {{count + 3}}
     <div class="wrapper">
-      <!-- <HelloWorld msg="You did it!" /> -->
+      <BlHelloWorld msg="You did it!" />
     </div>
   </header>
 </template>

@@ -8,7 +8,7 @@ module.exports = {
   mode: "development",
   devtool: "eval-cheap-source-map",
   entry: {
-    app: path.join(__dirname, "..", "src/main.ts"), // 项目总入口js文件
+    app: path.join(__dirname, "..", "src/index.ts"), // 项目总入口js文件
   },
   output: {
     path: path.join(__dirname, "..", "dist"),
@@ -16,7 +16,7 @@ module.exports = {
     publicPath: "/",
   },
   devServer: {
-    port: 8888,
+    port: 9999,
     host: "0.0.0.0", // 配置成0.0.0.0的话通过ip，localhost都能访问
     proxy: {
       "/api/base": {

@@ -1,5 +1,5 @@
 import Vue from "vue";
-import HelloWorld from "../packages/hello-world/index.js";
+import HelloWorld from "./hello-world/index.js";
 const components = [
   HelloWorld,
 ];
@@ -13,7 +13,7 @@ const install = function(Vue: any, opts = {}) {
 if (typeof window !== "undefined" && window.Vue) {
   install(window.Vue);
 }
-export default {
+export default{
   install,
   HelloWorld,
 };

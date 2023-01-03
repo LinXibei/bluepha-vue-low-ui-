@@ -6,16 +6,18 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   mode: "production",
   entry: {
-    app: path.join(__dirname, "..", "src/main.ts")
+    app: path.join(__dirname, "..", "packages/index.ts")
   },
   output: {
     path: path.resolve(process.cwd(), "./lib"),
     publicPath: "/dist/",
     filename: "bluepha-vue-low-ui.js",
     chunkFilename: "[id].js",
-    libraryExport: "default",
-    library: "ELEMENT",
-    libraryTarget: "commonjs2"
+    library: {
+      export: "default",
+      // name: "ELEMENT",
+      type: "commonjs2"
+    }
   },
   module: {
     rules: [{
