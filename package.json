@@ -1,6 +1,6 @@
 {
   "name": "bluepha-vue-low-ui",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "typings": "types/index.d.ts",
   "main": "lib/bluepha-vue-low-ui.js",
