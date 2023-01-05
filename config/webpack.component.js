@@ -7,7 +7,6 @@ module.exports = {
   mode: "production",
   entry: components,
   output: {
-    path: path.join(__dirname, "..", "dist"),
     path: path.resolve(process.cwd(), "./lib"),
     publicPath: "/dist/",
     filename: "[name].js",

@@ -21,7 +21,8 @@
     "eslint": "eslint src --ext .ts",
     "precommit": "lint-staged",
     "build:components": "webpack --config ./config/webpack.conf.js && cross-env NODE_ENV=component webpack --config ./config/webpack.component.js",
-    "pub": ""
+    "pub": "",
+    "test": "webpack --config ./config/webpack.test.js"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,jsx}": [
