@@ -3,6 +3,8 @@ const path = require("path");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const components = require("../component.json");
+const { externals } = require("./webpack.externals");
+const nodeExternals = require("webpack-node-externals");
 module.exports = {
   mode: "production",
   entry: components,
@@ -13,6 +15,14 @@ module.exports = {
     chunkFilename: "[id].js",
     libraryTarget: "commonjs2"
   },
+  performance: {
+    hints: false
+  },
+  stats: "none",
+  optimization: {
+    minimize: false
+  },
+  externalsPresets: { node: true }, // 为了忽略诸如path、fs等内置模块。
   module: {
     rules: [{
       test: /\.vue$/,
@@ -41,28 +51,9 @@ module.exports = {
       test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
       type: "asset/inline"
     }, {
-      test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-      type: "asset/inline"
-    }, {
       test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
       type: "asset/inline"
-    }, {
-      test: /\.tsx?$/,
-      loader: "ts-loader",
-      options: {
-        transpileOnly: true,
-        appendTsSuffixTo: [/\.vue$/],
-      },
-      exclude: [
-        /require/,
-        /node_modules/,
-        /public/
-      ],
-    }, {
-      test: /\.html$/,
-      loader: "underscore-template-loader" 
-    }
-    ]
+    }]
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
@@ -71,6 +62,7 @@ module.exports = {
       "@": path.resolve(__dirname, "../src"),
     }
   },
+  externals: [externals, nodeExternals()],
   plugins: [
     new VueLoaderPlugin(), // 最新版的vue-loader需要配置插件
     new MiniCssExtractPlugin({

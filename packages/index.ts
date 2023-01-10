@@ -1,4 +1,5 @@
 import HelloWorld from "./hello-world/index.js";
+import Button from "./button/index.js";
 const components = [
   HelloWorld,
 ];
@@ -15,4 +16,5 @@ if (typeof window !== "undefined" && window.Vue) {
 export default {
   install,
   HelloWorld,
+  Button
 };
