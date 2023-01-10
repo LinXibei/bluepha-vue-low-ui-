@@ -13,7 +13,11 @@ module.exports = {
     publicPath: "/dist/",
     filename: "[name].js",
     chunkFilename: "[id].js",
-    libraryTarget: "commonjs2"
+    // libraryTarget: "commonjs2",
+    library: {
+      type: "umd",
+      export: "default",
+    }
   },
   performance: {
     hints: false
@@ -22,7 +26,7 @@ module.exports = {
   optimization: {
     minimize: false
   },
-  externalsPresets: { node: true }, // 为了忽略诸如path、fs等内置模块。
+  // externalsPresets: { node: true }, // 为了忽略诸如path、fs等内置模块。
   module: {
     rules: [{
       test: /\.vue$/,

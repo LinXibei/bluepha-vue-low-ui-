@@ -1,3 +1,4 @@
 {
-  "hello-world": "./packages/hello-world/index.js"
+  "hello-world": "./packages/hello-world/index.js",
+  "button": "./packages/button/index.js"
 }
