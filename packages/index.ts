@@ -2,6 +2,7 @@ import HelloWorld from "./hello-world/index.js";
 import Button from "./button/index.js";
 const components = [
   HelloWorld,
+  Button
 ];
 const install = function(Vue: any, opts = {}) {
 

@@ -24,7 +24,7 @@ module.exports = {
       "<template>": "espree",
     },
     "ecmaVersion": 12,
-    "project": "tsconfig.json",
+    "project": "./tsconfig.json",
     "sourceType": "module",
     "extraFileExtensions": [".vue"],
     "allowAutomaticSingleRunInference": false
