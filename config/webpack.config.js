@@ -32,6 +32,9 @@ const config = {
             importLoaders: 1,
           }
         },
+        {
+          loader: "postcss-loader",
+        }
       ],
       sideEffects: true
     }, {
@@ -58,6 +61,19 @@ const config = {
     }, {
       test: /\.html$/,
       loader: "underscore-template-loader" 
+    }, {
+      test: /\.md$/,
+      use: [{
+        loader: "vue-loader",
+        options: {
+          hotReload: true,
+          loaders: {
+            ts: "ts-loader",
+          }
+        }
+      }, {
+        loader: path.resolve(__dirname, "./md-loader/index.js")
+      }]
     }
     ]
   },

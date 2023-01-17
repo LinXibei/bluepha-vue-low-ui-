@@ -2,13 +2,12 @@
 const path = require("path");
 const Webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 module.exports = {
   mode: "development",
   devtool: "eval-cheap-source-map",
   entry: {
-    app: path.join(__dirname, "..", "src/index.ts"), // 项目总入口js文件
+    app: path.join(__dirname, "..", "examples/main.js"), // 项目总入口js文件
   },
   output: {
     path: path.join(__dirname, "..", "dist"),
@@ -49,13 +48,9 @@ module.exports = {
   },
   target: "web",
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    }),
     new HtmlWebpackPlugin({
       filename: "index.html", // 生成的文件名称
-      template: "./public/index.html", // 指定用index.html做模版
+      template: "./examples/index.tpl", // 指定用index.html做模版
       inject: false, // 指定插入的<script>标签在body底部
       chunksSortMode: "none",
       favicon: "./public/favicon.ico",
