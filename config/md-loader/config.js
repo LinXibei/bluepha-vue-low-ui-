@@ -7,15 +7,15 @@ config
   .plugin("containers").use(containers).end(); // 创建自定义 markdown 容器
   
 const md = config.toMd();
-// function updatedMd(md) {
-//   const defaultRender = md.renderer.rules.fence;
-//   md.renderer.rules.fence = (tokens, idx, options, env, self) => {
-//     const token = tokens[idx];
-//     if (token.info === "html") {
-//       return `<template slot="highlight"><pre v-pre><code class="html">${token.content}</code></pre></template>`;
-//     }
-//     return defaultRender(tokens, idx, options, env, self);
-//   };
-// }
-// updatedMd(md);
+function updatedMd(md) {
+  const defaultRender = md.renderer.rules.fence;
+  md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+    const token = tokens[idx];
+    if (token.info === "html") {
+      return `<template slot="highlight"><pre v-pre><code class="html">${md.utils.escapeHtml(token.content)}</code></pre></template>`;
+    }
+    return defaultRender(tokens, idx, options, env, self);
+  };
+}
+updatedMd(md);
 module.exports = md;

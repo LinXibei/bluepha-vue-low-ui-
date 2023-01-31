@@ -12,7 +12,15 @@ Card includes title, content and operations.
   <BlHelloWorld class="box-card">
   </BlHelloWorld>
 </template>
-
+<script>
+  export default {
+    data() {
+      return {
+        title: "Hello Bluepha",
+      }
+    }
+  }
+</script>
 <style>
   .text {
     font-size: 14px;
@@ -35,6 +43,7 @@ Card includes title, content and operations.
     width: 480px;
   }
 </style>
+
 ```
 :::
 
@@ -44,11 +53,6 @@ The header part can be omitted.
 
 
 ### Shadow
-
-You can define when to show the card shadows
-
-:::demo The `shadow` attribute determines when the card shadows are displayed. It can be `always`, `hover` or `never`.
-:::
 
 ### Attributes
 | Attribute      | Description          | Type      | Accepted Values       | Default  |

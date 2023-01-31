@@ -42,6 +42,7 @@ export default class MainHeader extends Vue {
     top: 2px;
     font-size: 40px;
     margin: 0;
+    font-weight: bold;
   }
 }
 </style>

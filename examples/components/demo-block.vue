@@ -27,18 +27,6 @@
       <transition name="text-slide">
         <span v-show="hovering">{{ controlText }}</span>
       </transition>
-      <!-- <el-tooltip effect="dark" :content="langConfig['tooltip-text']" placement="right">
-        <transition name="text-slide">
-          <el-button
-            v-show="hovering || isExpanded"
-            size="small"
-            type="text"
-            class="control-button"
-            @click.stop="goCodepen">
-            {{ langConfig['button-text'] }}
-          </el-button>
-        </transition>
-      </el-tooltip> -->
     </div>
   </div>
 </template>
@@ -202,13 +190,18 @@ export default class DemoBlock extends Vue {
     // }
   }
   created() {
-    console.log(999, this.$slots);
+    // const highlight = this.$slots.highlight;
+    // if (highlight && highlight[0]) {
+    //   let code = "";
+    //   console.log(222, code);
+    //   console.log(333, highlight[0]);
+    // }
   }
   get controlText() {
     return this.isExpanded ? "隐藏代码" : "显示代码";
   }
 
-  get codeElem() {
+  get codeElem() { 
     return this.$el.getElementsByClassName("meta")[0] as HTMLBaseElement;
   }
 

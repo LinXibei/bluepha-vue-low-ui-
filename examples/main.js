@@ -5,7 +5,7 @@ import demoBlock from "./components/demo-block.vue";
 import "./assets/docs.css";
 import App from "./index.vue";
 
-// import hljs from "highlight.js";
+import hljs from "highlight.js";
 import routes from "./routes.js";
 Vue.use(HelloWorld);
 Vue.use(VueRouter);
@@ -16,10 +16,10 @@ const router = new VueRouter({
   routes
 });
 router.afterEach(() => {
-  // Vue.nextTick(() => {
-  //   const codeElems = document.querySelectorAll("pre code:not(.hljs)");
-  //   Array.prototype.forEach.call(codeElems, hljs.highlightElement);
-  // });
+  Vue.nextTick(() => {
+    const codeElems = document.querySelectorAll("pre code:not(.hljs)");
+    Array.prototype.forEach.call(codeElems, hljs.highlightElement);
+  });
 });
 new Vue({ // eslint-disable-line
   router,
