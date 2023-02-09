@@ -47,7 +47,6 @@ function getComponent(template, script) {
       ...scriptCode
     }
   })()`;
-  // console.log(2222, returnCode);
   return returnCode;
 }
 function getTemplate(content) {
@@ -100,7 +99,6 @@ module.exports = function(source) {
   } else if(content.indexOf("<script>") === 0) {
     pageScript = content.slice(0, content.indexOf("</script>") + "</script>".length);
   }
-  console.log(888, reContent);
   reContent.push(content.slice(start));
   return `<template>
 <section class="content element-doc">

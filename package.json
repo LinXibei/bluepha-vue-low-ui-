@@ -16,14 +16,13 @@
     "build:components": "webpack --config ./config/webpack.conf.js && cross-env NODE_ENV=component webpack --config ./config/webpack.component.js",
     "add:component": "node script/add-component.js",
     "start": "cross-env NODE_ENV=development SERVER_ENV=development BUILD_ENV=development webpack-dev-server --hot --config ./config/webpack.config.js",
+    "deploy:site": "cross-env NODE_ENV=production webpack --config ./config/webpack.deploy.config.js",
     "commitlint": "commitlint -e $GIT_PARAMS",
     "lint": "eslint -c .eslintrc.js --ext .ts ./src",
     "eslint": "eslint src --ext .ts",
     "precommit": "lint-staged",
     "pub": "",
-    "test": "webpack --config ./config/webpack.test.js",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "test": "webpack --config ./config/webpack.test.js"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,jsx}": [
@@ -85,7 +84,6 @@
     "vue-property-decorator": "^9.1.2",
     "vue-router": "^3.6.5",
     "vue-template-compiler": "^2.7.14",
-    "vuepress": "^2.0.0-beta.60",
     "webpack": "^5.73.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.7.3",

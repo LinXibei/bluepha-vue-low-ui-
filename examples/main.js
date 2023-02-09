@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import * as HelloWorld from "../lib/hello-world";
 import demoBlock from "./components/demo-block.vue";
 import "./assets/docs.css";
+import "./hjs.css";
 import App from "./index.vue";
 
 import hljs from "highlight.js";
@@ -12,7 +13,7 @@ Vue.use(VueRouter);
 Vue.component("demo-block", demoBlock);
 const router = new VueRouter({
   mode: "hash",
-  base: __dirname,
+  base: "/",
   routes
 });
 router.afterEach(() => {

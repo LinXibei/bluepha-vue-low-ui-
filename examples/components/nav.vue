@@ -5,8 +5,7 @@
         class="nav-item"
         v-for="(item, key) in data"
         :key="key">
-        <a v-if="!item.path && !item.href" @click="expandMenu">{{item.name}}</a>
-        <a v-if="item.href" :href="item.href" target="_blank">{{item.name}}</a>
+        <a v-if="!item.path" @click="expandMenu">{{item.name}}</a>
         <router-link
           v-if="item.path"
           active-class="active"
@@ -14,6 +13,20 @@
           exact
           v-text="item.title || item.name">
         </router-link>
+        <ul class="pure-menu-list sub-nav" v-if="item.list">
+          <li
+            class="nav-item"
+            v-for="(navItem, key) in item.list"
+            :key="key">
+            <router-link
+              class=""
+              active-class="active"
+              :to="navItem.path"
+              exact
+              v-text="navItem.title || navItem.name">
+            </router-link>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
@@ -23,18 +36,30 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import { NavJson } from "../nav";
 interface ListInter {
-    path: string;
-    title: string;
+    path?: string;
+    title?: string;
     name: string;
-    description: string;
+    description?: string;
 }
 @Component
 export default class MainNav extends Vue {
   count = 4;
   data: ListInter[] = [];
   created() {
-    const list: ListInter[] = NavJson["list"];
-    this.data.splice(0, this.data.length, ...list);
+    for (const item of NavJson) {
+      this.data.push({ ...item });
+    }
+  }
+  expandMenu(event: any) {
+    let target = event.currentTarget;
+    if (!target.nextElementSibling || target.nextElementSibling.tagName !== "UL") return;
+    this.hideAllMenu();
+    event.currentTarget.nextElementSibling.style.height = "auto";
+  }
+  hideAllMenu() {
+    [].forEach.call(this.$el.querySelectorAll(".pure-menu-list"), (ul: any) => {
+      ul["style"]["height"] = "0";
+    });
   }
 }
 </script>

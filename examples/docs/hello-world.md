@@ -1,11 +1,9 @@
 ## HelloWorld
-Integrate information in a card container.
 
-### Basic usage
 
-Card includes title, content and operations.
+### 基础用法
 
-:::demo Card is made up of `header` and `body`. `header` is optional, and its content distribution depends on a named slot.
+:::demo HelloWorld是一个测试组件. `header`.
 
 ```html
 <template>
@@ -21,38 +19,13 @@ Card includes title, content and operations.
     }
   }
 </script>
-<style>
-  .text {
-    font-size: 14px;
-  }
-
-  .item {
-    margin-bottom: 18px;
-  }
-
-  .clearfix:before,
-  .clearfix:after {
-    display: table;
-    content: "";
-  }
-  .clearfix:after {
-    clear: both
-  }
-
-  .box-card {
-    width: 480px;
-  }
-</style>
 
 ```
 :::
 
 ### Simple card
 
-The header part can be omitted.
-
-
-### Shadow
+这是一个测试组件
 
 ### Attributes
 | Attribute      | Description          | Type      | Accepted Values       | Default  |
